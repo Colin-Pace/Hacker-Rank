@@ -29,9 +29,14 @@ class LinkedList {
   }
 
   remove(data) {
+    if (data === undefined || data === null) {
+      return null;
+    }
+
     let itr = this.head;
     
-    while (itr.data !== data && itr !== null) {
+    while (itr.data !== data) {
+      console.log(itr.data);
       itr = itr.next;
     }
 
@@ -86,5 +91,5 @@ const integers = [1, 2, 3, 4];
 integers.forEach(integer => list.add(integer));
 
 list.read("forward");
-list.remove(1);
+list.remove(5);
 list.read("forward");
