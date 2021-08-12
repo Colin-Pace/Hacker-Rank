@@ -16,15 +16,19 @@ class LinkedList {
   }
 
   add(data) {
+    if (data === undefined || data === null) {
+      return null;
+    }
+
     if (this.head === undefined) {
       this.head = new Node(data);
-      this.tail = this.head;
+      return this.tail = this.head;
  
     } else {
       const node = new Node(data);
       this.tail.next = node;
       node.prev = this.tail;
-      this.tail = this.tail.next;
+      return this.tail = this.tail.next;
     }
   }
 
@@ -35,34 +39,41 @@ class LinkedList {
 
     let itr = this.head;
     
-    while (itr.data !== data) {
-      console.log(itr.data);
+    while (itr.data !== data && itr.next !== undefined) {
       itr = itr.next;
+    }
+
+    if (itr === this.tail && itr.data !== data) {
+      return console.log("Data not in list");
     }
 
     if (itr === this.head) {
       if (this.tail === this.head) {
-        delete this;
+        return delete this;
   
       } else {
         this.head = this.head.next;
-        delete this.head.prev;
+        return delete this.head.prev;
       }
   
     } else if (itr === this.tail) {
       this.tail = this.tail.prev;
-      delete this.tail.next;
+      return delete this.tail.next;
   
     } else {
       const node = itr.next;
       itr = itr.prev;
       delete itr.next;
       itr.next = node;
-      node.prev = itr;
+      return node.prev = itr;
     }
   }
 
   read(direction) {
+    if (direction === undefined || direction === null) {
+      return null;
+    }
+
     let itr = undefined;
     const answer = [];
     
@@ -81,7 +92,7 @@ class LinkedList {
       }
     }
 
-    console.log(answer);
+    return console.log(answer);
   }
 }
 
@@ -91,5 +102,5 @@ const integers = [1, 2, 3, 4];
 integers.forEach(integer => list.add(integer));
 
 list.read("forward");
-list.remove(5);
+list.remove(0);
 list.read("forward");
