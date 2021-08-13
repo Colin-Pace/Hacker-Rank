@@ -302,3 +302,77 @@ const integers = [100, 20, 80, 150, 120, 200, 170, 160, 210];
 integers.forEach(integer => tree.add(integer));
 
 console.log(tree.minMaxDepths());
+
+
+
+/* Example tree with algorithms
+
+                                  10
+                                /   \
+                               5     15
+                                    /   \
+                                  12     20
+Searches
+1. Order
+    1. Depth: orders
+          A. Pre
+          B. In
+          C. Post
+    2. Breadth
+          A. Level order
+
+2. Method
+  1. Iteration
+
+    A. Pre with stack
+      1. Push root to stack
+      2. While stack
+        A. Pop stack for vertex
+        B. Save data to answer
+        C. Push right and left to stack
+      3. Return answer
+    
+    B. In with stack
+      1. Set fast to root
+      2. While true
+        A. While fast
+          1. Push fast to stack
+          2. Set fast to fast left
+        B. Break if stack is empty 
+        C. Set slow to stack pop and 
+            save data to answer
+        D. Set fast to slow right
+      3. Return answer
+    
+    C. Post with stack
+      1. Set fast and slow to root
+      2. While fast
+        A. While fast left
+          1. Push fast to stack
+          2. Set fast to fast left
+        B. While fast right is slow or null
+          1. Save fast data to answer
+          2. Set slow to fast
+          3. Return if stack empty
+          4. Set fast to stack pop
+        C. Push fast to stack
+        D. Set fast to fast right
+      3. Return answer
+    
+    D. Level with queue 
+      1. Push root to q
+      2. While q length
+        A. Shift q for vertex
+        B. Save vertex data to answer
+        C. Push vertex left if left
+        D. Push vertex right if right
+      3. Return answer
+
+  2. Recursion
+    1. Pre: save data to answer; left; right
+    2. In:  left; save data to answer; right
+    3. Post: left; right; save data to answer
+
+
+
+*/
