@@ -326,7 +326,7 @@ Searches
 
     A. Pre with stack
       1. Push root to stack
-      2. While stack
+      2. While stack length
         A. Pop stack for vertex
         B. Save data to answer
         C. Push right and left to stack
@@ -350,7 +350,7 @@ Searches
         A. While fast left
           1. Push fast to stack
           2. Set fast to fast left
-        B. While fast right is slow or null
+        B. While fast right is slow or undefined
           1. Save fast data to answer
           2. Set slow to fast
           3. Return if stack empty
